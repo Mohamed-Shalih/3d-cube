@@ -1,0 +1,179 @@
+*{
+    padding: 0;margin: 0;
+    box-sizing: border-box;
+    text-transform: uppercase;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.container{
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 50px;
+    perspective: 1000px;
+    background: linear-gradient(90deg, #444 50%, #eee 50.1%);
+}
+.container .image-container{
+    height: 500px;
+    width: 600px;
+    position: relative;
+    transform: translateZ(-250px);
+    transform-style: preserve-3d;
+    transition: all .5s cubic-bezier(0.17, 0.67, 0.49, 1.62);
+}
+.container .container-box{
+    height: 500px;
+    width: 600px;
+    position: relative;
+    transform: translateZ(-250px);
+    transform-style: preserve-3d;
+    transition: all .5s cubic-bezier(0.17, 0.67, 0.49, 1.62);
+}
+.container .image-container .box{
+    position: absolute;
+    height: 500px;
+    width: 600px;
+    border: 2px solid #000;
+    border-right: 1px solid #000;
+    transform-style: preserve-3d;
+    transition: 1s;
+}
+.container .image-container .box img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+.container .image-container .box h3{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    color: #eee;
+    font-size: 120px;
+    transform: translate(-50%);
+    text-shadow: 0 5px 10px rgba(0,0,0,.3);
+}
+.container .container-box .box{
+    width: 600px;
+    height: 500px;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #3c6382;
+    border: 2px solid #000;
+    border-left: 1px solid #000;
+    transform-style: preserve-3d;
+    transition: 1s;
+}
+.container .container-box .content{
+    padding: 50px;
+}
+.container .container-box .box .number{
+    position: absolute;
+    top:5px;right:10px;
+    font-size: 150px;
+    color: #fff3;
+    font-weight: bolder;
+}
+.container .container-box .box h3{
+    color: #eee;
+    font-size: 35px;
+}
+.container .container-box .box p{
+    color: #eee;
+    font-size: 17px;
+    padding: 10px 0;
+    text-transform: lowercase;
+}
+.container .container-box .box a{
+    display: inline-block;
+    margin-top: 5px;
+    font-size: 15px;
+    padding: 10px 20px;
+    background: #eee;
+    color: #333;
+    text-decoration: none;
+    border: 1px solid #000;
+    transition: .5s;
+}
+.container .container-box .box a:hover{
+    color: #eee;
+    background: #333;
+}
+.container .container-box .box:nth-child(2){
+    background: #8e44ad;
+}
+.container .container-box .box:nth-child(3){
+    background: #e58e26;
+}
+.container .container-box .box:nth-child(4){
+    background: #b71540;
+}
+.front{
+    transform: rotateX(0deg) translateZ(250px);
+}
+.bottom{
+    transform: rotateX(-90deg) translateZ(250px);
+}
+.back{
+    transform: rotateX(-180deg) translateZ(250px);
+}
+.top{
+    transform: rotateX(90deg) translateZ(250px);
+}
+#r1,#r2,#r3,#r4{
+    display: none;
+}
+.controls{
+    position: fixed;
+    top: 50%;
+    right: 55px;
+    transform: translateY(-50%);
+    background: #eee;
+    border: 1px solid #000;
+    padding: 10px 5px;
+    z-index: 1000;
+    border-radius: .5rem;
+}
+.controls label{
+    display: block;
+    border-radius: 50%;
+    border: 1px solid #000;
+    background: #aaa;
+    height: 15px;
+    width: 15px;
+    margin: 10px;
+    cursor: pointer;
+}
+.controls label:hover,
+#r1:checked ~ .controls label:nth-child(1),
+#r2:checked ~ .controls label:nth-child(2),
+#r3:checked ~ .controls label:nth-child(3),
+#r4:checked ~ .controls label:nth-child(4){
+    background: #333;
+}
+#r1:checked ~ .container .image-container{
+    transform: translateZ(-250px) rotateX(0deg);
+}
+#r2:checked ~ .container .image-container{
+    transform: translateZ(-250px) rotateX(-90deg);
+}
+#r3:checked ~ .container .image-container{
+    transform: translateZ(-250px) rotateX(-180deg);
+}
+#r4:checked ~ .container .image-container{
+    transform: translateZ(-250px) rotateX(-270deg);
+}
+
+#r1:checked ~ .container .container-box{
+    transform: translateZ(-250px) rotateX(0deg);
+}
+#r2:checked ~ .container .container-box{
+    transform: translateZ(-250px) rotateX(90deg);
+}
+#r3:checked ~ .container .container-box{
+    transform: translateZ(-250px) rotateX(180deg);
+}
+#r4:checked ~ .container .container-box{
+    transform: translateZ(-250px) rotateX(270deg);
+}
